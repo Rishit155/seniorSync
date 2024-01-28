@@ -39,31 +39,33 @@ class TodoList extends Component {
 
     return (
       <div style={styles.container}>
-        <h1 style={styles.title}>Today's Checklist</h1>
-        <ul style={styles.list}>
-          {todos.map((todo, index) => (
-            <li key={index} style={{ ...styles.todoItem, ...(todo.completed ? styles.completed : {}) }}>
-              <input
-                type="checkbox"
-                checked={todo.completed}
-                onChange={() => this.handleCheckboxChange(index)}
-              />
-              <span>{todo.task}</span>
-            </li>
-          ))}
-        </ul>
-        <div style={styles.inputContainer}>
-          <input
-            type="text"
-            value={inputValue}
-            onChange={this.handleInputChange}
-            placeholder="Add a new task..."
-            style={styles.input}
-          />
-          <button onClick={this.handleAddTodo} style={styles.button}>Add</button>
+        <div style={styles.blueBox}>
+          <h1 style={styles.title}>Today's Checklist</h1>
+          <ul style={styles.list}>
+            {todos.map((todo, index) => (
+              <li key={index} style={{ ...styles.todoItem, ...(todo.completed ? styles.completed : {}) }}>
+                <input
+                  type="checkbox"
+                  checked={todo.completed}
+                  onChange={() => this.handleCheckboxChange(index)}
+                />
+                <span>{todo.task}</span>
+              </li>
+            ))}
+          </ul>
+          <div style={styles.inputContainer}>
+            <input
+              type="text"
+              value={inputValue}
+              onChange={this.handleInputChange}
+              placeholder="Add a new task..."
+              style={styles.input}
+            />
+            <button onClick={this.handleAddTodo} style={styles.button}>Add</button>
+          </div>
+          <button style={styles.button} onClick={() => alert("Talk to me")}>Talk to me</button>
+          <button style={styles.button} onClick={() => alert("Call for Help")}>Call for Help</button>
         </div>
-        <button style={styles.button} onClick={() => alert("Talk to me")}>Talk to me</button>
-        <button style={styles.button} onClick={() => alert("Call for Help")}>Call for Help</button>
       </div>
     );
   }
@@ -72,16 +74,18 @@ class TodoList extends Component {
 const styles = {
   container: {
     display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
     minHeight: '100vh',
     background: '#E0F2F1',
-    padding: '20px',
+  },
+  blueBox: {
+    background: '#FFFFFF',
     borderRadius: '10px',
     boxShadow: '0 0 10px rgba(0,0,0,0.1)',
-    maxWidth: '600px',
+    maxWidth: '400px',
     width: '100%',
+    padding: '20px',
     boxSizing: 'border-box',
   },
   title: {
