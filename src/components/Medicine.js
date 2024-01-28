@@ -1,68 +1,48 @@
 import React, { Component } from 'react';
 
-class Medication extends Component {
+class TodoList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      medicines: ['hello'],
-      inputValue: ''
+      todos: [
+        { task: 'Hydrocodone: 9am', completed: false },
+        { task: 'Lisinopril: 9am', completed: false },
+        { task: 'Omeprazole: 9am', completed: false }
+      ],
     };
   }
 
-  handleInputChange = (event) => {
-    this.setState({ inputValue: event.target.value });
-  };
-
-  handleAddMedicine = () => {
-    const { inputValue, medicines } = this.state;
-    if (inputValue.trim() !== '') {
-      this.setState({
-        medicines: [...medicines, { name: inputValue }],
-        inputValue: ''
-      });
-    }
-  };
-
-  handleDeleteMedicine = (index) => {
-    const { medicines } = this.state;
-    const updatedMedicines = [...medicines];
-    updatedMedicines.splice(index, 1);
-    this.setState({ medicines: updatedMedicines });
+  handleCheckboxChange = (index) => {
+    const { todos } = this.state;
+    const updatedTodos = [...todos];
+    updatedTodos[index].completed = !updatedTodos[index].completed;
+    this.setState({ todos: updatedTodos });
   };
 
   render() {
-    const { medicines, inputValue } = this.state;
+    const { todos } = this.state;
 
     return (
       <div style={styles.container}>
         <div style={styles.blueBox}>
-          <h1 style={styles.title}>Medication Tracker</h1>
+          <h1 style={styles.title}>Jane's Medication</h1>
           <div style={styles.pillar}>
             <ul style={styles.list}>
-              {medicines.map((medicine, index) => (
-                <li key={index} style={styles.todoItem}>
-                  <span>{medicine.name}</span>
-                  <button onClick={() => this.handleDeleteMedicine(index)} style={styles.deleteButton}>
-                    Delete
-                  </button>
+              {todos.map((todo, index) => (
+                <li key={index} style={{ ...styles.todoItem, ...(todo.completed ? styles.completed : {}) }}>
+                  <input
+                    type="checkbox"
+                    checked={todo.completed}
+                    onChange={() => this.handleCheckboxChange(index)}
+                  />
+                  <span>{todo.task}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <div style={styles.inputContainer}>
-            <input
-              type="text"
-              value={inputValue}
-              onChange={this.handleInputChange}
-              placeholder="Add a new medicine..."
-              style={styles.input}
-            />
-            <button onClick={this.handleAddMedicine} style={styles.button}>Add</button>
-          </div>
-          <div style={styles.buttonGroup}>
-            <button style={styles.button} onClick={() => alert("Talk to me")}>Talk to me</button>
-            <button style={styles.button} onClick={() => alert("Call for Help")}>Call for Help</button>
-          </div>
+          <button onClick={() => alert("Medications not working?: Notify Doctor!")} style={styles.notifyButton}>
+          Medications not working?: Notify Doctor!"
+          </button>
         </div>
       </div>
     );
@@ -76,17 +56,6 @@ const styles = {
     alignItems: 'center',
     minHeight: '100vh',
     background: '#E0F2F1',
-  },
-  deleteButton: {
-    padding: '8px 16px',
-    fontSize: '1rem',
-    fontWeight: 'bold',
-    backgroundColor: '#FF5733', // Adjusted color for delete button
-    color: 'white',
-    border: 'none',
-    borderRadius: '5px',
-    marginLeft: '10px', // Added margin to separate delete button from medicine name
-    cursor: 'pointer',
   },
   blueBox: {
     background: '#FFFFFF',
@@ -124,35 +93,17 @@ const styles = {
     textDecoration: 'line-through',
     opacity: '0.5',
   },
-  inputContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    marginBottom: '20px',
-  },
-  input: {
-    flex: '1',
-    marginRight: '10px',
-    padding: '8px',
-    fontSize: '1rem',
-    borderRadius: '5px',
-    border: '1px solid #ccc',
-  },
-  buttonGroup: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    width: '100%', // Added to stretch the buttons horizontally
-    marginTop: '10px', // Adjusted to separate the buttons from the input
-  },
-  button: {
+  notifyButton: {
     padding: '8px 16px',
     fontSize: '1rem',
     fontWeight: 'bold',
-    backgroundColor: '#4CAF50',
+    backgroundColor: '#FF5733',
     color: 'white',
     border: 'none',
     borderRadius: '5px',
     cursor: 'pointer',
+    marginTop: '20px', // Added margin to separate the button from the input container
   },
 };
 
-export default Medication;
+export default TodoList;

@@ -56,17 +56,9 @@ class TodoList extends Component {
             </ul>
           </div>
           <div style={styles.inputContainer}>
-            <input
-              type="text"
-              value={inputValue}
-              onChange={this.handleInputChange}
-              placeholder="Add a new task..."
-              style={styles.input}
-            />
-            <button onClick={this.handleAddTodo} style={styles.button}>Add</button>
           </div>
           <div style={styles.buttonGroup}>
-            <button style={styles.button} onClick={() => alert("Talk to me")}>Talk to me</button>
+            <button style={styles.button} onClick={() => alert("Talk to Authorized User")}>Talk to Authorized User</button>
             <button style={styles.button} onClick={() => alert("Call for Help")}>Call for Help</button>
           </div>
         </div>
