@@ -19,6 +19,16 @@ class TodoList extends Component {
     this.setState({ todos: updatedTodos });
   };
 
+  handlePrescribeMedication = () => {
+    // Implement logic to prescribe new medication here
+    alert("Prescribing new medication!");
+  };
+
+  handleCheckPatientNotes = () => {
+    // Implement logic to check patient notes here
+    alert("Checking patient notes!");
+  };
+
   render() {
     const { todos } = this.state;
 
@@ -40,9 +50,14 @@ class TodoList extends Component {
               ))}
             </ul>
           </div>
-          <button onClick={() => alert("Medications not working?: Notify Doctor!")} style={styles.notifyButton}>
-          Medications not working?: Notify Doctor!"
-          </button>
+          <div style={styles.buttonContainer}>
+            <button onClick={this.handlePrescribeMedication} style={styles.button}>
+              Prescribe New Medication
+            </button>
+            <button onClick={this.handleCheckPatientNotes} style={styles.button}>
+              Check Patient Notes
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -93,16 +108,22 @@ const styles = {
     textDecoration: 'line-through',
     opacity: '0.5',
   },
-  notifyButton: {
+  buttonContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    marginTop: '20px', // Added margin to separate the button from the input container
+  },
+  button: {
     padding: '8px 16px',
     fontSize: '1rem',
     fontWeight: 'bold',
-    backgroundColor: '#FF5733',
+    backgroundColor: '#4CAF50',
     color: 'white',
     border: 'none',
     borderRadius: '5px',
     cursor: 'pointer',
-    marginTop: '20px', // Added margin to separate the button from the input container
+    marginBottom: '10px',
   },
 };
 

@@ -59,10 +59,7 @@ const LandingPage = () => {
       <nav>
         <ul style={navUlStyles}>
           <li style={navUlLiStyles}>
-            <Link to="/games" style={navUlLiLinkStyles}>Activities</Link>
-          </li>
-          <li style={navUlLiStyles}>
-            <Link to="/checklist" style={navUlLiLinkStyles}>Checklist</Link>
+            <Link to="/metrics" style={navUlLiLinkStyles}>Metrics</Link>
           </li>
           <li style={navUlLiStyles}>
             <Link to="/medicine" style={navUlLiLinkStyles}>Medicine</Link>
