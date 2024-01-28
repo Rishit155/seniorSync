@@ -66,7 +66,7 @@ class TodoList extends Component {
             <button onClick={this.handleAddTodo} style={styles.button}>Add</button>
           </div>
           <div style={styles.buttonGroup}>
-            <button style={styles.button} onClick={() => alert("Talk to me")}>Talk to me</button>
+            <button style={styles.button} onClick={() => alert("Call Senior")}>Call Senior</button>
             <button style={styles.button} onClick={() => alert("Call for Help")}>Call for Help</button>
           </div>
         </div>

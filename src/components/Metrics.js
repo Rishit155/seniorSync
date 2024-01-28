@@ -163,7 +163,7 @@ class Metrics extends React.Component {
         plugins: {
           title: {
             display: true,
-            text: 'Jane\'s Sleep Pattern Over the Last Year',
+            text: 'Jane\'s Sleep Pattern Over the Last Month',
             font: {
               size: 16
             }
@@ -220,7 +220,7 @@ class Metrics extends React.Component {
         plugins: {
           title: {
             display: true,
-            text: 'Jane\'s Medicine Consistency Over the Last Year',
+            text: 'Jane\'s Medicine Consistency Over the Last Month',
             font: {
               size: 16
             }
@@ -277,7 +277,7 @@ class Metrics extends React.Component {
         plugins: {
           title: {
             display: true,
-            text: 'Jane\'s steps completed from the last year',
+            text: 'Jane\'s steps completed from the last Month',
             font: {
               size: 16
             }
@@ -318,7 +318,7 @@ class Metrics extends React.Component {
         </div>
         <div style={styles.container}>
           <div style={styles.metricsContainer}>
-            <h3 style={styles.title}>Jane's Metrics</h3>
+            <h3 style={styles.title}>Jane's Metrics for the Week</h3>
             <div style={styles.metric}>
               <strong>Average Sleep Hours:</strong> {sleepHours}
             </div>
