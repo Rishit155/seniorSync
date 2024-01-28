@@ -41,18 +41,20 @@ class TodoList extends Component {
       <div style={styles.container}>
         <div style={styles.blueBox}>
           <h1 style={styles.title}>Today's Checklist</h1>
-          <ul style={styles.list}>
-            {todos.map((todo, index) => (
-              <li key={index} style={{ ...styles.todoItem, ...(todo.completed ? styles.completed : {}) }}>
-                <input
-                  type="checkbox"
-                  checked={todo.completed}
-                  onChange={() => this.handleCheckboxChange(index)}
-                />
-                <span>{todo.task}</span>
-              </li>
-            ))}
-          </ul>
+          <div style={styles.pillar}>
+            <ul style={styles.list}>
+              {todos.map((todo, index) => (
+                <li key={index} style={{ ...styles.todoItem, ...(todo.completed ? styles.completed : {}) }}>
+                  <input
+                    type="checkbox"
+                    checked={todo.completed}
+                    onChange={() => this.handleCheckboxChange(index)}
+                  />
+                  <span>{todo.task}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
           <div style={styles.inputContainer}>
             <input
               type="text"
@@ -63,8 +65,10 @@ class TodoList extends Component {
             />
             <button onClick={this.handleAddTodo} style={styles.button}>Add</button>
           </div>
-          <button style={styles.button} onClick={() => alert("Talk to me")}>Talk to me</button>
-          <button style={styles.button} onClick={() => alert("Call for Help")}>Call for Help</button>
+          <div style={styles.buttonGroup}>
+            <button style={styles.button} onClick={() => alert("Talk to me")}>Talk to me</button>
+            <button style={styles.button} onClick={() => alert("Call for Help")}>Call for Help</button>
+          </div>
         </div>
       </div>
     );
@@ -83,16 +87,24 @@ const styles = {
     background: '#FFFFFF',
     borderRadius: '10px',
     boxShadow: '0 0 10px rgba(0,0,0,0.1)',
-    maxWidth: '400px',
-    width: '100%',
+    height: '100vh', // Adjusted to full viewport height
+    width: '400px', // Adjusted to desired width
     padding: '20px',
     boxSizing: 'border-box',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    position: 'relative', // Added positioning for absolute buttons
   },
   title: {
     fontSize: '1.5rem',
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: '20px',
+  },
+  pillar: {
+    flex: '1', // Takes remaining space
+    overflowY: 'auto', // Enables vertical scrolling if content exceeds box height
   },
   list: {
     listStyleType: 'none',
@@ -120,6 +132,12 @@ const styles = {
     borderRadius: '5px',
     border: '1px solid #ccc',
   },
+  buttonGroup: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    width: '100%', // Added to stretch the buttons horizontally
+    marginTop: '10px', // Adjusted to separate the buttons from the input
+  },
   button: {
     padding: '8px 16px',
     fontSize: '1rem',
@@ -129,7 +147,6 @@ const styles = {
     border: 'none',
     borderRadius: '5px',
     cursor: 'pointer',
-    marginRight: '10px',
   },
 };
 
